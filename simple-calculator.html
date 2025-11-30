@@ -1,0 +1,214 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple calculator</title>
+     <style>
+        *{
+            margin: 0;
+        }
+         header{
+            background-color: rgb(4, 26, 26);
+            display: flex;
+            justify-content: space-between;
+        }
+        ul{
+            display: flex;
+            gap: 20px;
+            margin: 45px;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(4, 4, 241);
+        }
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 40px 0;
+        }
+
+        .container {
+            width: 360px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 6px;
+            border: 1px solid #d1d1d1;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #333333;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #444444;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 400px;
+            padding: 10px;
+            border: 1px solid #b5b5b5;
+            border-radius: 4px;
+            font-size: 15px;
+            margin-bottom: 18px;
+            background: #fafafa;
+        }
+
+        input:focus {
+            border-color: #7a7a7a;
+            background: #ffffff;
+            outline: none;
+        }
+
+        button {
+            width: 425px;
+            padding: 12px;
+            background: #333333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #222222;
+        }
+
+        p {
+            margin-top: 18px;
+            font-size: 16px;
+            color: #333333;
+        }
+
+        b {
+            color: #000;
+        }
+        .maino{
+            display: flex;
+        }
+        .main{
+            border: 1px solid gray;
+        }
+        img{
+            width: 378px;
+            height: 400px;
+            transition: transform 5s;
+        }
+        img:hover{
+            transform: scale(1.05);
+        }
+           .container {
+            width: 450px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+         <ul>
+            <li><a href="#">Other Apps</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Get help</a></li>
+            <li><a href="#">Sign up</a></li>
+        </ul>
+    </header>
+    <div class="maino">
+        <div class="main">
+    <div>
+    <label for="num1">First number</label>
+<input type="number" id="num1" placeholder="Enter number 1">
+    </div>
+
+      <div>
+    <label for="num1">Enter operation (+, -, *, /)</label>
+<input type="text" id="operation" placeholder="Enter operation">
+    </div>
+
+       <div>
+    <label for="num2">Second number</label>
+<input type="number" id="num2" placeholder="Enter number 2">
+    </div>
+    
+    <button onclick="showResult()">Show result</button>
+    <p>The sum is = <b id="result"></b></p>
+    </div>
+    
+<div class="container">
+    <h2>Log Calculator</h2>
+    <label for="number">Number:</label>
+    <input type="number" id="number" placeholder="Enter number">
+
+    <label for="base">Base:</label>
+    <input type="number" id="base" placeholder="Enter base (default 10)">
+
+    <button onclick="calculateLog()">Calculate Log</button>
+
+    <p>Result: <b id="result"></b></p>
+</div>
+   <img src="c:\Users\USER1\Downloads\calculator" alt="Live in culculated life">
+ </div>
+    <script>
+function addTwoNumbers(num1, num2){
+    return num1 + num2;
+}
+function timesTwonumbers(num1,num2){
+    return num1*num2;
+}
+function showResult(){
+    const num1=Number(document.getElementById("num1").value);
+    const num2=Number(document.getElementById("num2").value);
+
+    const sign = String(document.getElementById("operation").value);
+
+    if(sign=="+"){
+           const answer=addTwoNumbers(num1,num2)
+           document.getElementById("result").innerHTML =answer;
+    }
+   else if(sign=="*" || sign=="x"){
+        const answer=timesTwonumbers(num1,num2);
+    
+        document.getElementById("result").innerHTML=answer;
+    }
+    else if(sign=="-"){
+
+        document.getElementById("result").innerHTML=num1-num2;
+    }
+    else if(sign=="/"){
+        document.getElementById("result").innerHTML=(num1/num2)?.toFixed(2);
+    }
+    else{
+        document.getElementById("result").innerHTML="operation not found";
+    }
+    
+}
+function calculateLog() {
+    const num = Number(document.getElementById("number").value);
+    let base = Number(document.getElementById("base").value);
+    if (!base) base = 10;
+
+    if (num <= 0 || base <= 0 || base === 1) {
+        document.getElementById("result").innerText = "Invalid input";
+        return;
+    }
+
+    const logResult = Math.log(num) / Math.log(base);
+    document.getElementById("result").innerText = logResult.toFixed(4);
+}
+    </script>
+
+</body>
+</html>
